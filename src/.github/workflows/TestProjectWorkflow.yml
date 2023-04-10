@@ -1,0 +1,17 @@
+name: Test Project Workflow
+on: workflow_dispatch
+jobs: 
+    INSTALL-LIB:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: install jdk
+              uses: actions/setup-java@v3
+              with:
+                
+                java-version: '11'
+                distribution: 'adopt'
+                cache: 'gradle'
+            - name: Run test suit
+              run: gradle clean build -x test 
+              
